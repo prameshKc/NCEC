@@ -1,0 +1,14 @@
+A:\NCECPROJ\BLL\obj\Debug\netstandard2.0\BLL.csprojAssemblyReference.cache
+A:\NCECPROJ\BLL\obj\Debug\netstandard2.0\BLL.csproj.CoreCompileInputs.cache
+A:\NCECPROJ\BLL\obj\Debug\netstandard2.0\BLL.AssemblyInfoInputs.cache
+A:\NCECPROJ\BLL\obj\Debug\netstandard2.0\BLL.AssemblyInfo.cs
+A:\NCECPROJ\BLL\bin\Debug\netstandard2.0\BLL.deps.json
+A:\NCECPROJ\BLL\bin\Debug\netstandard2.0\BLL.dll
+A:\NCECPROJ\BLL\bin\Debug\netstandard2.0\BLL.pdb
+A:\NCECPROJ\BLL\bin\Debug\netstandard2.0\DAL.dll
+A:\NCECPROJ\BLL\bin\Debug\netstandard2.0\DomainModel.dll
+A:\NCECPROJ\BLL\bin\Debug\netstandard2.0\DAL.pdb
+A:\NCECPROJ\BLL\bin\Debug\netstandard2.0\DomainModel.pdb
+A:\NCECPROJ\BLL\obj\Debug\netstandard2.0\BLL.csproj.CopyComplete
+A:\NCECPROJ\BLL\obj\Debug\netstandard2.0\BLL.dll
+A:\NCECPROJ\BLL\obj\Debug\netstandard2.0\BLL.pdb

@@ -1,0 +1,9 @@
+A:\NCECPROJ\DomainModel\bin\Debug\netstandard2.0\DomainModel.deps.json
+A:\NCECPROJ\DomainModel\bin\Debug\netstandard2.0\DomainModel.dll
+A:\NCECPROJ\DomainModel\bin\Debug\netstandard2.0\DomainModel.pdb
+A:\NCECPROJ\DomainModel\obj\Debug\netstandard2.0\DomainModel.csprojAssemblyReference.cache
+A:\NCECPROJ\DomainModel\obj\Debug\netstandard2.0\DomainModel.csproj.CoreCompileInputs.cache
+A:\NCECPROJ\DomainModel\obj\Debug\netstandard2.0\DomainModel.AssemblyInfoInputs.cache
+A:\NCECPROJ\DomainModel\obj\Debug\netstandard2.0\DomainModel.AssemblyInfo.cs
+A:\NCECPROJ\DomainModel\obj\Debug\netstandard2.0\DomainModel.dll
+A:\NCECPROJ\DomainModel\obj\Debug\netstandard2.0\DomainModel.pdb
