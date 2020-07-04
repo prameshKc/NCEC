@@ -1,0 +1,231 @@
+body{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.header {
+	background: rgb(237, 237, 237);
+	height: 720px;
+}
+
+.header .navbar .collapse{
+	justify-content: flex-end;
+}
+
+.Hheader .navbar .collapse{
+	justify-content: center;
+}
+
+.Hheader .navbar{
+	background: #E9E9EB;
+}
+
+
+
+.navbar a{
+	text-transform: uppercase;
+	font-weight: 600;
+	color: rgb(47, 84, 150) !important;
+
+}
+
+.Nimg,
+.web,
+.Company{
+	font-family: "Times New Roman", Times, serif;
+}
+
+.Nimg img{
+	margin: 10% 0 0 38%;
+	margin: 10% 0 0 38%;
+}
+
+.Nimg h3{
+    font-size: 18px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+
+.web h3{
+	font-size: 18px;
+    text-align: center;
+    margin-top: 7%;
+}
+
+.web img{
+	margin: 3% 0 0 25%;
+}
+
+.Company{
+    margin-top: 10%;
+    text-align: center;
+}
+
+
+.Company h3{
+	font-size: 20px;
+    margin-bottom: 1%;
+}
+
+.limg{
+	width: 200px;
+}
+
+.glimpse,
+.Partnersbody,
+.contact{
+	margin-top: 10%;
+}
+
+
+.MRB{
+	margin-bottom: 9%;
+    border-bottom: 4px dashed red;
+}
+
+.Gnece  h1,
+.people h1{
+	font-family: "Times New Roman", Times, serif;
+	text-align: center;
+	font-size: 3rem;
+	color: rgb(116, 116, 116);
+}
+
+.glimpse h2,
+.Partnersbody h2,
+.PartManu h2,
+.contact h2{
+	font-weight: 600;
+	color: rgb(0, 112, 192);
+}
+
+.glimpse h3{
+	font-weight: 600;
+	font-size: 1.3rem;
+}
+
+.Gnece h3{
+	font-weight: 600;
+	font-size: 20px;
+	text-align: center;
+}
+
+.TAJ p{
+	text-align: justify; 
+}
+
+.Vision h3{
+	margin: 3% 0;
+}
+
+.PPQp{
+	margin-bottom: 3rem;
+}
+.pmarbot{
+	margin-bottom: 2px;
+}
+
+.imgp{
+	margin-left: 12%;
+}
+
+.Partnersbody img,
+.PartManu img{
+	margin: 12% 0 0 19%;
+    width: 220px;
+}
+
+.Partnersbody h3,
+.PartManu h3{
+	font-weight: 600;
+
+}
+
+.Pamarbot{
+	margin-bottom: 4%;
+}
+
+.duetz img{
+	width: 200px;
+    margin: 0% 0 0 20%;
+}
+
+.soil img {
+    margin: 2% 0 0 19%;
+}
+
+.PartManu h2{
+	margin-bottom: 5%;
+}
+
+ .CHEEMA img {
+    margin: 0% 0 0 19%;
+}
+
+.idl img{
+	margin: 3% 0 0 19%;
+}
+
+.martop{
+	margin-top: 3%;
+}
+
+.marbot{
+	margin-bottom: 3%;
+}
+
+.CEO{
+	display: flex;
+	justify-content: space-around;
+	margin-top: 2%;
+}
+
+.textc{
+	text-align: center;
+}
+
+.CEo{
+	display: flex;
+	margin-top: 2%;
+}
+
+.CEo .ceoone,
+.CEo .twone,
+.CEo .thr{
+	width: 33.33%;
+}
+
+.Vdetail{
+	margin-left: 15%;
+}
+
+.Ventures h4{
+	font-weight: 600;
+}
+
+.Cdetail,
+.CndDet{
+	display: flex;
+	margin: 3% 0;
+}
+
+
+.Headofc, .Service, .Liasion,
+.Euip, .Contact, .Eng{
+	width: 33.33%;
+}
+.CndDet a{
+	margin-right: 50%;
+}
+
+
+.contact p{
+	margin-bottom: 2px;
+}
+
+.CndDet p{
+	margin-bottom: 3%;
+}
