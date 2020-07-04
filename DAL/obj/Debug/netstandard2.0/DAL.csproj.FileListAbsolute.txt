@@ -7,3 +7,12 @@ A:\NCECPROJ\DAL\bin\Debug\netstandard2.0\DAL.dll
 A:\NCECPROJ\DAL\bin\Debug\netstandard2.0\DAL.pdb
 A:\NCECPROJ\DAL\obj\Debug\netstandard2.0\DAL.dll
 A:\NCECPROJ\DAL\obj\Debug\netstandard2.0\DAL.pdb
+C:\Users\ACER\Documents\ranish\gitProj\NCEC\DAl\bin\Debug\netstandard2.0\DAL.deps.json
+C:\Users\ACER\Documents\ranish\gitProj\NCEC\DAl\bin\Debug\netstandard2.0\DAL.dll
+C:\Users\ACER\Documents\ranish\gitProj\NCEC\DAl\bin\Debug\netstandard2.0\DAL.pdb
+C:\Users\ACER\Documents\ranish\gitProj\NCEC\DAl\obj\Debug\netstandard2.0\DAL.csprojAssemblyReference.cache
+C:\Users\ACER\Documents\ranish\gitProj\NCEC\DAl\obj\Debug\netstandard2.0\DAL.csproj.CoreCompileInputs.cache
+C:\Users\ACER\Documents\ranish\gitProj\NCEC\DAl\obj\Debug\netstandard2.0\DAL.AssemblyInfoInputs.cache
+C:\Users\ACER\Documents\ranish\gitProj\NCEC\DAl\obj\Debug\netstandard2.0\DAL.AssemblyInfo.cs
+C:\Users\ACER\Documents\ranish\gitProj\NCEC\DAl\obj\Debug\netstandard2.0\DAL.dll
+C:\Users\ACER\Documents\ranish\gitProj\NCEC\DAl\obj\Debug\netstandard2.0\DAL.pdb

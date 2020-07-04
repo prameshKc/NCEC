@@ -10,6 +10,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using DAL;
+using BLL.Abstract;
+using BLL.Implementation;
 namespace CMS
 {
     public class Startup
@@ -27,6 +29,8 @@ namespace CMS
             services.AddControllersWithViews();
 
             services.AddScoped(typeof(IConnection<>), typeof(DbConnection<>));
+            //services.AddScoped(interface, repoclass);
+            services.AddScoped<IHeadline, HeadlineRepo>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

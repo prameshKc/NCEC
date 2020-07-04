@@ -1957,6 +1957,22 @@
           "lib/netstandard1.3/System.Xml.XDocument.dll": {}
         }
       },
+      "BLL/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "DAL": "1.0.0",
+          "DomainModel": "1.0.0",
+          "Microsoft.Extensions.Configuration": "3.1.5",
+          "dapper": "2.0.35"
+        },
+        "compile": {
+          "bin/placeholder/BLL.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/BLL.dll": {}
+        }
+      },
       "DAL/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
@@ -1970,6 +1986,16 @@
         },
         "runtime": {
           "bin/placeholder/DAL.dll": {}
+        }
+      },
+      "DomainModel/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/DomainModel.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DomainModel.dll": {}
         }
       }
     }
@@ -6579,36 +6605,47 @@
         "system.xml.xdocument.nuspec"
       ]
     },
+    "BLL/1.0.0": {
+      "type": "project",
+      "path": "../BLL/BLL.csproj",
+      "msbuildProject": "../BLL/BLL.csproj"
+    },
     "DAL/1.0.0": {
       "type": "project",
       "path": "../DAl/DAL.csproj",
       "msbuildProject": "../DAl/DAL.csproj"
+    },
+    "DomainModel/1.0.0": {
+      "type": "project",
+      "path": "../DomainModel/DomainModel.csproj",
+      "msbuildProject": "../DomainModel/DomainModel.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
+      "BLL >= 1.0.0",
       "DAL >= 1.0.0",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 3.1.3"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Acer\\.nuget\\packages\\": {},
+    "C:\\Users\\ACER\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "A:\\NCECPROJ\\CMS\\CMS.csproj",
+      "projectUniqueName": "C:\\Users\\ACER\\Documents\\ranish\\gitProj\\NCEC\\CMS\\CMS.csproj",
       "projectName": "CMS",
-      "projectPath": "A:\\NCECPROJ\\CMS\\CMS.csproj",
-      "packagesPath": "C:\\Users\\Acer\\.nuget\\packages\\",
-      "outputPath": "A:\\NCECPROJ\\CMS\\obj\\",
+      "projectPath": "C:\\Users\\ACER\\Documents\\ranish\\gitProj\\NCEC\\CMS\\CMS.csproj",
+      "packagesPath": "C:\\Users\\ACER\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ACER\\Documents\\ranish\\gitProj\\NCEC\\CMS\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Acer\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ACER\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6621,8 +6658,11 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "A:\\NCECPROJ\\DAl\\DAL.csproj": {
-              "projectPath": "A:\\NCECPROJ\\DAl\\DAL.csproj"
+            "C:\\Users\\ACER\\Documents\\ranish\\gitProj\\NCEC\\BLL\\BLL.csproj": {
+              "projectPath": "C:\\Users\\ACER\\Documents\\ranish\\gitProj\\NCEC\\BLL\\BLL.csproj"
+            },
+            "C:\\Users\\ACER\\Documents\\ranish\\gitProj\\NCEC\\DAl\\DAL.csproj": {
+              "projectPath": "C:\\Users\\ACER\\Documents\\ranish\\gitProj\\NCEC\\DAl\\DAL.csproj"
             }
           }
         }
@@ -6659,7 +6699,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.200\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
       }
     }
   }

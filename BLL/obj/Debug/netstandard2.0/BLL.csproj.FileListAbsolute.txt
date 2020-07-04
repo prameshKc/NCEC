@@ -12,3 +12,17 @@ A:\NCECPROJ\BLL\bin\Debug\netstandard2.0\DomainModel.pdb
 A:\NCECPROJ\BLL\obj\Debug\netstandard2.0\BLL.csproj.CopyComplete
 A:\NCECPROJ\BLL\obj\Debug\netstandard2.0\BLL.dll
 A:\NCECPROJ\BLL\obj\Debug\netstandard2.0\BLL.pdb
+C:\Users\ACER\Documents\ranish\gitProj\NCEC\BLL\bin\Debug\netstandard2.0\BLL.deps.json
+C:\Users\ACER\Documents\ranish\gitProj\NCEC\BLL\bin\Debug\netstandard2.0\BLL.dll
+C:\Users\ACER\Documents\ranish\gitProj\NCEC\BLL\bin\Debug\netstandard2.0\BLL.pdb
+C:\Users\ACER\Documents\ranish\gitProj\NCEC\BLL\bin\Debug\netstandard2.0\DAL.dll
+C:\Users\ACER\Documents\ranish\gitProj\NCEC\BLL\bin\Debug\netstandard2.0\DomainModel.dll
+C:\Users\ACER\Documents\ranish\gitProj\NCEC\BLL\bin\Debug\netstandard2.0\DAL.pdb
+C:\Users\ACER\Documents\ranish\gitProj\NCEC\BLL\bin\Debug\netstandard2.0\DomainModel.pdb
+C:\Users\ACER\Documents\ranish\gitProj\NCEC\BLL\obj\Debug\netstandard2.0\BLL.csprojAssemblyReference.cache
+C:\Users\ACER\Documents\ranish\gitProj\NCEC\BLL\obj\Debug\netstandard2.0\BLL.csproj.CoreCompileInputs.cache
+C:\Users\ACER\Documents\ranish\gitProj\NCEC\BLL\obj\Debug\netstandard2.0\BLL.AssemblyInfoInputs.cache
+C:\Users\ACER\Documents\ranish\gitProj\NCEC\BLL\obj\Debug\netstandard2.0\BLL.AssemblyInfo.cs
+C:\Users\ACER\Documents\ranish\gitProj\NCEC\BLL\obj\Debug\netstandard2.0\BLL.csproj.CopyComplete
+C:\Users\ACER\Documents\ranish\gitProj\NCEC\BLL\obj\Debug\netstandard2.0\BLL.dll
+C:\Users\ACER\Documents\ranish\gitProj\NCEC\BLL\obj\Debug\netstandard2.0\BLL.pdb
