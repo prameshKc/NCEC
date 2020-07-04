@@ -8,7 +8,7 @@ namespace CMS.Controllers
 {
     public class HeadLineController : Controller
     {
-        public IActionResult Index()
+        public IActionResult View()
         {
             return View();
         }
