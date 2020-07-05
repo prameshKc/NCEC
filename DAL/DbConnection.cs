@@ -27,8 +27,11 @@ namespace DAL {
             }
         }
 
-        public Task DeleteAsync (string Query, CommandType type, DynamicParameters parm = null) {
-            throw new NotImplementedException ();
+        public async Task DeleteAsync (string Query, CommandType type, DynamicParameters parm = null) {
+            using (var conn = GetDbConnection ()) {
+                conn.Open ();
+                var taks = await conn.ExecuteAsync (Query, parm, commandType : type);
+            }
         }
 
         public async Task<IEnumerable<T>> FilterAsync (Func<T, bool> predicate, string Query, CommandType type, DynamicParameters parm = null) {
