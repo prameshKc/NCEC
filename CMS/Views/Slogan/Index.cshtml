@@ -1,0 +1,268 @@
+@{
+    ViewBag.Title = "Slogans";
+}
+<style>
+    .btnAdd {
+        margin: 0 0px 0px 40px;
+    }
+
+</style>
+<div>
+    <div>
+        <h3>Slogans</h3>
+        <hr/>
+        <div class="row">
+            <div class="col-md-2">
+                <button type="button" class="btn btn-sm btn-outline-primary btnAdd" data-toggle="modal" 
+                data-target="#addSLModal">Add Slogan</button>
+            </div>
+            <div class="col-md-8">
+                <input type="text" id="searchSL" class="form-control form-control-sm" autocomplete="off" placeholder="Search by Slogan..."/>
+            </div>
+        </div>
+        <br/>
+    </div>
+    <div>
+        <table class="table table-bordered table-sm">
+            <thead class="table-dark">
+                <tr>
+                    <th>S.N.</th>
+                    <th>Slogan</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="bodySL">
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Add/update Modal -->
+<div class="modal fade" id="addSLModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalNameSL">Add Slogan</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+           <input id="idSL" name="idSL" hidden/>
+            <div class="form-group">
+                <label>Slogan</label>
+                <textarea id="SLDes" type="text" class="form-control form-control-sm" autocomplete="off" placeholder="Enter Slogan" rows="3"></textarea>
+            </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
+        <input type="button" id="btnSaveSL" class="btn btn-outline-success" value="Save" />
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Delete Modal -->
+<div class="modal fade" id="deleteSLModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Delete Slogan</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+           <input id="idSLDel" name="idSLDel" hidden/>
+            <div class="row">
+                <div class="col-md-2"> 
+                    <i class="fa fa-question-circle" style="font-size: 50px; color: #4bb349;"></i>
+                </div>
+                <div class="col-md-10">
+                    Sure? You want to delete this.
+                </div>
+            </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
+        <input type="button" id="btnDelSL" class="btn btn-outline-danger" value="Delete" />
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+    $(function(){
+        $('#SLDes').summernote({
+            placeholder: 'Write slogan here...',
+            toolbar: [
+                // [groupName, [list of button]]
+                ['style', ['bold', 'italic', 'underline', 'clear']],
+                ['font', ['strikethrough', 'superscript', 'subscript']],
+                ['fontsize', ['fontsize']],
+                ['color', ['color']],
+                ['fontname', ['fontname']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['height', ['height']]
+            ]
+        });
+        
+        $('#addSLModal').on('shown.bs.modal', function () {
+            $('#SLDes').summernote('focus');
+        });
+        
+        $('#addSLModal').on('hidden.bs.modal', function () {
+            $('#idSL').val(0);
+            $('#SLDes').summernote("code", '');
+            $('#btnSaveSL').val('Save');
+            $('#modalNameSL').html('Add Slogan');
+        });
+
+        getSlogans();
+
+        $('#searchSL').keydown(function(e){
+            if(e.keyCode === 13)
+            {
+                getSlogans();
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        $('#btnSaveSL').click(function(){
+            if($('#idSL').val().trim() === '')
+            {
+                $('#idSL').val(0);
+            }
+            $.ajax({
+                url: '/Slogan/Slogan_AddUpdate',
+                async: false,
+                type: 'post',
+                dataType: 'json',
+                data: { 
+                    Id : $('#idSL').val(),
+                    Slogans: $('#SLDes').val()
+                },
+                success: function(data){
+                    if(data === 'Success')
+                    {
+                        if(parseInt($('#idSL').val()) === 0)
+                        {
+                            alert("Record Successfully Added!");
+                        }
+                        else
+                        {
+                            alert("Record Successfully Updated!");
+                        }
+                        $('#addSLModal').modal('hide');
+                        restForm();
+                    }
+                    else
+                    {
+                        alert(data);
+                    }
+                },
+                error: function(data){
+                    alert(data);
+                }
+            });
+        });
+
+        $('#bodySL').on('click', '.editSL', function(){
+            var id = $(this).attr('data-id');
+            if(id > 0)
+            {  
+                $.ajax({
+                    url: '/Slogan/GetSlogansById',
+                    async: false,
+                    type: 'get',
+                    dataType: 'json',
+                    data: { Id : id },
+                    success: function(data){
+                        $('#modalNameSL').html('Update Slogan');
+                        $('#btnSaveSL').val('Update');
+                        $('#idSL').val(id);
+                        $('#SLDes').summernote('code', data.slogans);
+                        $('#addSLModal').modal('show');
+                    },
+                    error: function(data){
+                        alert(data);
+                    }
+                });
+            }
+        });
+
+        $('#bodySL').on('click', '.deleteSL', function(){
+            $('#deleteSLModal').modal('show');
+            var id = $(this).attr('data-id');
+            $('#idSLDel').val(id);
+        });
+
+        $("#btnDelSL").click(function(){
+            if(parseInt($('#idSLDel').val()) > 0)
+            {
+                $.ajax({
+                    url: '/Slogan/Slogan_Delete',
+                    async: false,
+                    type: 'post',
+                    dataType: 'json',
+                    data: { 
+                        Id : $('#idSLDel').val()
+                    },
+                    success: function(data){
+                        if(data === 'Deleted')
+                        {
+                            alert("Record Successfully Deleted!");
+                            $('#deleteSLModal').modal('hide');
+                            restForm();
+                        }
+                        else
+                        {
+                            alert(data);
+                        }
+                    },
+                    error: function(data){
+                        alert(data);
+                    }
+                });
+            }
+        });
+    });
+
+    function getSlogans(){
+        $.ajax({
+            url: '/Slogan/GetSlogans',
+            async: false,
+            type: 'get',
+            dataType: 'json',
+            data: { title : $('#searchSL').val().trim() },
+            success: function(data){
+                var h ='', sn = 1;
+                $.each(data, function(i, val){
+                    h +='<tr>';
+                    h +='<td style="width:2%;">'+ sn +'</td>';
+                    h +='<td>'+ val.slogans +'</td>';
+                    h +='<td style="width: 13%;"><div class="row"><div class="col-md-6"><button type="button" data-id="'+ val.id +'" class="editSL btn btn-sm btn-outline-info">Edit</button></div>'+
+                    '<div class="col-md-6"><button type="button" data-id="'+ val.id +'" class="deleteSL btn btn-sm btn-outline-danger">Delete</button></td></div>';
+                    h +='</tr>';
+                    sn++;
+                });
+                $('#bodySL').html(h);
+            },
+            error: function(data){
+                alert(data);
+            }
+        });
+
+    }
+
+    function restForm(){
+        getSlogans();
+        $('#idSL').val(0);
+        $('#SLDes').summernote("code", '');
+        $('#btnSaveSL').val('Save');
+        $('#idSLDel').val(0);
+    }
+</script>

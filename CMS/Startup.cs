@@ -31,6 +31,9 @@ namespace CMS
             services.AddScoped(typeof(IConnection<>), typeof(DbConnection<>));
             //services.AddScoped(interface, repoclass);
             services.AddScoped<IHeadline, HeadlineRepo>();
+            services.AddScoped<ISlogan, SloganRepo>();
+            services.AddScoped<IPartner, PartnersRepo>();
+            services.AddScoped<IVentures, VenturesRepo>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

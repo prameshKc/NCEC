@@ -1,0 +1,255 @@
+@{
+    ViewBag.Title = "Partner Titles";
+}
+<style>
+    .btnAdd {
+        margin: 0 0px 0px 40px;
+    }
+
+</style>
+<div>
+    <div>
+        <h3>Partner Titles</h3>
+        <hr/>
+        <div class="row">
+            <div class="col-md-2">
+                <button type="button" class="btn btn-sm btn-outline-primary btnAdd" data-toggle="modal" 
+                data-target="#addPMModal">Add Title</button>
+            </div>
+            <div class="col-md-8">
+                <input type="text" id="searchPM" class="form-control form-control-sm" autocomplete="off" placeholder="Search by Partner Title..."/>
+            </div>
+        </div>
+        <br/>
+    </div>
+    <div>
+        <table class="table table-bordered table-sm">
+            <thead class="table-dark">
+                <tr>
+                    <th>S.N.</th>
+                    <th>Partner Title</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="bodyPM">
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Add/update Modal -->
+<div class="modal fade" id="addPMModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalNamePM">Add Partner Title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+           <input id="idPM" name="idPM" hidden/>
+            <div class="form-group">
+                <label>Title</label>
+                <input id="PMTitle" type="text" class="form-control form-control-sm" autocomplete="off" placeholder="Enter Title"/>
+            </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
+        <input type="button" id="btnSavePM" class="btn btn-outline-success" value="Save" />
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Delete Modal -->
+<div class="modal fade" id="deletePMModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Delete Partner Title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+           <input id="idPMDel" name="idPMDel" hidden/>
+            <div class="row">
+                <div class="col-md-2"> 
+                    <i class="fa fa-question-circle" style="font-size: 50px; color: #4bb349;"></i>
+                </div>
+                <div class="col-md-10">
+                    Sure? You want to delete this.
+                </div>
+            </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
+        <input type="button" id="btnDelPM" class="btn btn-outline-danger" value="Delete" />
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+    $(function(){
+        
+        $('#addPMModal').on('shown.bs.modal', function () {
+            $('#PMTitle').focus();
+        });
+        
+        $('#addPMModal').on('hidden.bs.modal', function () {
+            $('#idPM').val(0);
+            $('#PMTitle').val('');
+            $('#btnSavePM').val('Save');
+            $('#modalNamePM').html('Add Partner Title');
+        });
+
+        getPartnerTitles();
+
+        $('#searchPM').keydown(function(e){
+            if(e.keyCode === 13)
+            {
+                getPartnerTitles();
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        $('#btnSavePM').click(function(){
+            if($('#idPM').val().trim() === '')
+            {
+                $('#idPM').val(0);
+            }
+            $.ajax({
+                url: '/Partner/PartnerTitle_AddUpdate',
+                async: false,
+                type: 'post',
+                dataType: 'json',
+                data: { 
+                    PartnerMasterId : $('#idPM').val(),
+                    PartnerTitle: $('#PMTitle').val(),
+                },
+                success: function(data){
+                    if(data === 'Success')
+                    {
+                        if(parseInt($('#idPM').val()) === 0)
+                        {
+                            alert("Record Successfully Added!");
+                        }
+                        else
+                        {
+                            alert("Record Successfully Updated!");
+                        }
+                        $('#addPMModal').modal('hide');
+                        restForm();
+                    }
+                    else
+                    {
+                        alert(data);
+                    }
+                },
+                error: function(data){
+                    alert(data);
+                }
+            });
+        });
+
+        $('#bodyPM').on('click', '.editPM', function(){
+            var id = $(this).attr('data-id');
+            if(id > 0)
+            {  
+                $.ajax({
+                    url: '/Partner/GetPartnerTitleById',
+                    async: false,
+                    type: 'get',
+                    dataType: 'json',
+                    data: { Id : id },
+                    success: function(data){
+                        $('#modalNamePM').html('Update Partner Title');
+                        $('#btnSavePM').val('Update');
+                        $('#idPM').val(id);
+                        $('#PMTitle').val(data.partnerTitle);
+                        $('#addPMModal').modal('show');
+                    },
+                    error: function(data){
+                        alert(data);
+                    }
+                });
+            }
+        });
+
+        $('#bodyPM').on('click', '.deletePM', function(){
+            $('#deletePMModal').modal('show');
+            var id = $(this).attr('data-id');
+            $('#idPMDel').val(id);
+        });
+
+        $("#btnDelPM").click(function(){
+            if(parseInt($('#idPMDel').val()) > 0)
+            {
+                $.ajax({
+                    url: '/Partner/PartnerTitle_Delete',
+                    async: false,
+                    type: 'post',
+                    dataType: 'json',
+                    data: { 
+                        Id : $('#idPMDel').val()
+                    },
+                    success: function(data){
+                        if(data === 'Deleted')
+                        {
+                            alert("Record Successfully Deleted!");
+                            $('#deletePMModal').modal('hide');
+                            restForm();
+                        }
+                        else
+                        {
+                            alert(data);
+                        }
+                    },
+                    error: function(data){
+                        alert(data);
+                    }
+                });
+            }
+        });
+    });
+
+    function getPartnerTitles(){
+        $.ajax({
+            url: '/Partner/GetPartnerTitle',
+            async: false,
+            type: 'get',
+            dataType: 'json',
+            data: { title : $('#searchPM').val().trim() },
+            success: function(data){
+                var h ='', sn = 1;
+                $.each(data, function(i, val){
+                    h +='<tr>';
+                    h +='<td style="width:2%;">'+ sn +'</td>';
+                    h +='<td>'+ val.partnerTitle +'</td>';
+                    h +='<td style="width: 13%;"><div class="row"><div class="col-md-6"><button type="button" data-id="'+ val.partnerMasterId +'" class="editPM btn btn-sm btn-outline-info">Edit</button></div>'+
+                    '<div class="col-md-6"><button type="button" data-id="'+ val.partnerMasterId +'" class="deletePM btn btn-sm btn-outline-danger">Delete</button></td></div>';
+                    h +='</tr>';
+                    sn++;
+                });
+                $('#bodyPM').html(h);
+            },
+            error: function(data){
+                alert(data);
+            }
+        });
+
+    }
+
+    function restForm(){
+        getPartnerTitles();
+        $('#idPM').val(0);
+        $('#PMTitle').val('');
+        $('#btnSavePM').val('Save');
+        $('#idPMDel').val(0);
+    }
+</script>

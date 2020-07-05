@@ -34,6 +34,13 @@ namespace DAL {
             }
         }
 
+        public async Task<int> DeleteAsyncReturn (string Query, CommandType type, DynamicParameters parm = null) {
+            using (var conn = GetDbConnection ()) {
+                conn.Open ();
+                return await SqlMapper.QueryFirstOrDefaultAsync<int> (conn, Query, parm, commandType : type);
+            }
+        }
+
         public async Task<IEnumerable<T>> FilterAsync (Func<T, bool> predicate, string Query, CommandType type, DynamicParameters parm = null) {
             using (var conn = GetDbConnection ()) {
                 conn.Open ();

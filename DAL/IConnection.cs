@@ -13,6 +13,7 @@ namespace DAL {
         Task<IEnumerable<T>> FilterAsync (Func<T, bool> predicate, string sqlQuery, CommandType type, DynamicParameters parameters = null);
         Task AddAsync (string sqlQuery, CommandType type, DynamicParameters parameters = null);
         Task DeleteAsync (string sqlQuery, CommandType type, DynamicParameters parameters = null);
+        Task<int> DeleteAsyncReturn (string sqlQuery, CommandType type, DynamicParameters parameters = null);
         Task UpdateAsync (string sqlQuery, CommandType type, DynamicParameters parameters = null);
     }
 }

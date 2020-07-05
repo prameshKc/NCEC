@@ -247,3 +247,10 @@ C:\Users\ACER\Documents\ranish\gitProj\NCEC\CMS\bin\Debug\netcoreapp3.1\DomainMo
 C:\Users\ACER\Documents\ranish\gitProj\NCEC\CMS\bin\Debug\netcoreapp3.1\BLL.pdb
 C:\Users\ACER\Documents\ranish\gitProj\NCEC\CMS\bin\Debug\netcoreapp3.1\DomainModel.pdb
 C:\Users\ACER\Documents\ranish\gitProj\NCEC\CMS\obj\Debug\netcoreapp3.1\Razor\Views\HeadLine\Index.cshtml.g.cs
+C:\Users\ACER\Documents\ranish\gitProj\NCEC\cms\obj\Debug\netcoreapp3.1\Razor\Views\Slogan\Index.cshtml.g.cs
+C:\Users\ACER\Documents\ranish\gitProj\NCEC\cms\obj\Debug\netcoreapp3.1\Razor\Views\Partner\Details.cshtml.g.cs
+C:\Users\ACER\Documents\ranish\gitProj\NCEC\cms\obj\Debug\netcoreapp3.1\Razor\Views\Partner\Index.cshtml.g.cs
+C:\Users\ACER\Documents\ranish\gitProj\NCEC\cms\obj\Debug\netcoreapp3.1\Razor\Views\Partner\Master.cshtml.g.cs
+C:\Users\ACER\Documents\ranish\gitProj\NCEC\cms\obj\Debug\netcoreapp3.1\Razor\Views\Venture\Details.cshtml.g.cs
+C:\Users\ACER\Documents\ranish\gitProj\NCEC\cms\obj\Debug\netcoreapp3.1\Razor\Views\Venture\Index.cshtml.g.cs
+C:\Users\ACER\Documents\ranish\gitProj\NCEC\cms\obj\Debug\netcoreapp3.1\Razor\Views\Venture\Master.cshtml.g.cs

@@ -1,0 +1,255 @@
+@{
+    ViewBag.Title = "Venture Titles";
+}
+<style>
+    .btnAdd {
+        margin: 0 0px 0px 40px;
+    }
+
+</style>
+<div>
+    <div>
+        <h3>Venture Titles</h3>
+        <hr/>
+        <div class="row">
+            <div class="col-md-2">
+                <button type="button" class="btn btn-sm btn-outline-primary btnAdd" data-toggle="modal" 
+                data-target="#addVMModal">Add Title</button>
+            </div>
+            <div class="col-md-8">
+                <input type="text" id="searchVM" class="form-control form-control-sm" autocomplete="off" placeholder="Search by Venture Title..."/>
+            </div>
+        </div>
+        <br/>
+    </div>
+    <div>
+        <table class="table table-bordered table-sm">
+            <thead class="table-dark">
+                <tr>
+                    <th>S.N.</th>
+                    <th>Venture Title</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="bodyVM">
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Add/update Modal -->
+<div class="modal fade" id="addVMModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalNameVM">Add Venture Title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+           <input id="idVM" name="idVM" hidden/>
+            <div class="form-group">
+                <label>Title</label>
+                <input id="VMTitle" type="text" class="form-control form-control-sm" autocomplete="off" placeholder="Enter Title"/>
+            </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
+        <input type="button" id="btnSaveVM" class="btn btn-outline-success" value="Save" />
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Delete Modal -->
+<div class="modal fade" id="deleteVMModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Delete Venture Title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+           <input id="idVMDel" name="idVMDel" hidden/>
+            <div class="row">
+                <div class="col-md-2"> 
+                    <i class="fa fa-question-circle" style="font-size: 50px; color: #4bb349;"></i>
+                </div>
+                <div class="col-md-10">
+                    Sure? You want to delete this.
+                </div>
+            </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
+        <input type="button" id="btnDelVM" class="btn btn-outline-danger" value="Delete" />
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+    $(function(){
+        
+        $('#addVMModal').on('shown.bs.modal', function () {
+            $('#VMTitle').focus();
+        });
+        
+        $('#addVMModal').on('hidden.bs.modal', function () {
+            $('#idVM').val(0);
+            $('#VMTitle').val('');
+            $('#btnSaveVM').val('Save');
+            $('#modalNameVM').html('Add Venture Title');
+        });
+
+        getVentureTitles();
+
+        $('#searchVM').keydown(function(e){
+            if(e.keyCode === 13)
+            {
+                getVentureTitles();
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        $('#btnSaveVM').click(function(){
+            if($('#idVM').val().trim() === '')
+            {
+                $('#idVM').val(0);
+            }
+            $.ajax({
+                url: '/Venture/VenturesTitle_AddUpdate',
+                async: false,
+                type: 'post',
+                dataType: 'json',
+                data: { 
+                    VenturesMasterId : $('#idVM').val(),
+                    VenturesTitle: $('#VMTitle').val(),
+                },
+                success: function(data){
+                    if(data === 'Success')
+                    {
+                        if(parseInt($('#idVM').val()) === 0)
+                        {
+                            alert("Record Successfully Added!");
+                        }
+                        else
+                        {
+                            alert("Record Successfully Updated!");
+                        }
+                        $('#addVMModal').modal('hide');
+                        restForm();
+                    }
+                    else
+                    {
+                        alert(data);
+                    }
+                },
+                error: function(data){
+                    alert(data);
+                }
+            });
+        });
+
+        $('#bodyVM').on('click', '.editVM', function(){
+            var id = $(this).attr('data-id');
+            if(id > 0)
+            {  
+                $.ajax({
+                    url: '/Venture/GetVentureTitleById',
+                    async: false,
+                    type: 'get',
+                    dataType: 'json',
+                    data: { Id : id },
+                    success: function(data){
+                        $('#modalNameVM').html('Update Venture Title');
+                        $('#btnSaveVM').val('Update');
+                        $('#idVM').val(id);
+                        $('#VMTitle').val(data.venturesTitle);
+                        $('#addVMModal').modal('show');
+                    },
+                    error: function(data){
+                        alert(data);
+                    }
+                });
+            }
+        });
+
+        $('#bodyVM').on('click', '.deleteVM', function(){
+            $('#deleteVMModal').modal('show');
+            var id = $(this).attr('data-id');
+            $('#idVMDel').val(id);
+        });
+
+        $("#btnDelVM").click(function(){
+            if(parseInt($('#idVMDel').val()) > 0)
+            {
+                $.ajax({
+                    url: '/Venture/VentureTitle_Delete',
+                    async: false,
+                    type: 'post',
+                    dataType: 'json',
+                    data: { 
+                        Id : $('#idVMDel').val()
+                    },
+                    success: function(data){
+                        if(data === 'Deleted')
+                        {
+                            alert("Record Successfully Deleted!");
+                            $('#deleteVMModal').modal('hide');
+                            restForm();
+                        }
+                        else
+                        {
+                            alert(data);
+                        }
+                    },
+                    error: function(data){
+                        alert(data);
+                    }
+                });
+            }
+        });
+    });
+
+    function getVentureTitles(){
+        $.ajax({
+            url: '/Venture/GetVentureTitle',
+            async: false,
+            type: 'get',
+            dataType: 'json',
+            data: { title : $('#searchVM').val().trim() },
+            success: function(data){
+                var h ='', sn = 1;
+                $.each(data, function(i, val){
+                    h +='<tr>';
+                    h +='<td style="width:2%;">'+ sn +'</td>';
+                    h +='<td>'+ val.venturesTitle +'</td>';
+                    h +='<td style="width: 13%;"><div class="row"><div class="col-md-6"><button type="button" data-id="'+ val.venturesMasterId +'" class="editVM btn btn-sm btn-outline-info">Edit</button></div>'+
+                    '<div class="col-md-6"><button type="button" data-id="'+ val.venturesMasterId +'" class="deleteVM btn btn-sm btn-outline-danger">Delete</button></td></div>';
+                    h +='</tr>';
+                    sn++;
+                });
+                $('#bodyVM').html(h);
+            },
+            error: function(data){
+                alert(data);
+            }
+        });
+
+    }
+
+    function restForm(){
+        getVentureTitles();
+        $('#idVM').val(0);
+        $('#VMTitle').val('');
+        $('#btnSaveVM').val('Save');
+        $('#idVMDel').val(0);
+    }
+</script>
