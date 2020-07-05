@@ -246,4 +246,4 @@ C:\Users\ACER\Documents\ranish\gitProj\NCEC\CMS\bin\Debug\netcoreapp3.1\BLL.dll
 C:\Users\ACER\Documents\ranish\gitProj\NCEC\CMS\bin\Debug\netcoreapp3.1\DomainModel.dll
 C:\Users\ACER\Documents\ranish\gitProj\NCEC\CMS\bin\Debug\netcoreapp3.1\BLL.pdb
 C:\Users\ACER\Documents\ranish\gitProj\NCEC\CMS\bin\Debug\netcoreapp3.1\DomainModel.pdb
-C:\Users\ACER\Documents\ranish\gitProj\NCEC\CMS\obj\Debug\netcoreapp3.1\Razor\Views\HeadLine\View.cshtml.g.cs
+C:\Users\ACER\Documents\ranish\gitProj\NCEC\CMS\obj\Debug\netcoreapp3.1\Razor\Views\HeadLine\Index.cshtml.g.cs

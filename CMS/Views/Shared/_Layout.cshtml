@@ -15,6 +15,28 @@
   <link rel="stylesheet" href="~/dist/css/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    
+  <!-- REQUIRED SCRIPTS -->
+  <!-- jQuery -->
+  <script src="~/plugins/jquery/jquery.min.js"></script>
+  <!-- Bootstrap -->
+  <script src="~/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- overlayScrollbars -->
+  <script src="~/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+  <!-- AdminLTE App -->
+  <script src="~/dist/js/adminlte.js"></script>
+  
+  <!-- include summernote css/js -->
+  <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+
+  <!-- PAGE ~/plugins -->
+  <!-- jQuery Mapael -->
+  <script src="~/plugins/jquery-mousewheel/jquery.mousewheel.js"></script>
+  <script src="~/plugins/raphael/raphael.min.js"></script>
+  <script src="~/plugins/jquery-mapael/jquery.mapael.min.js"></script>
+
 </head>
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
@@ -75,7 +97,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="/HeadLine/View" class="nav-link">
+            <a href="/HeadLine/Index" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Headlines
@@ -141,13 +163,13 @@
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <div class="content-header">
+    @* <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
 
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
-    </div>
+    </div> *@
     <!-- /.content-header -->
 
     <!-- Main content -->
@@ -175,21 +197,6 @@
 </div>
 <!-- ./wrapper -->
 
-<!-- REQUIRED SCRIPTS -->
-<!-- jQuery -->
-<script src="~/plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap -->
-<script src="~/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- overlayScrollbars -->
-<script src="~/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
-<!-- AdminLTE App -->
-<script src="~/dist/js/adminlte.js"></script>
-
-<!-- PAGE ~/plugins -->
-<!-- jQuery Mapael -->
-<script src="~/plugins/jquery-mousewheel/jquery.mousewheel.js"></script>
-<script src="~/plugins/raphael/raphael.min.js"></script>
-<script src="~/plugins/jquery-mapael/jquery.mapael.min.js"></script>
 
 </body>
 </html>

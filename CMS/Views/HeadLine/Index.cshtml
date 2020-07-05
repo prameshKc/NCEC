@@ -1,0 +1,107 @@
+@{
+    ViewData["Title"] = "Head Line";
+}
+<style>
+    .btnAdd {
+        margin: 0 0px 0px 40px;
+    }
+</style>
+<div>
+    <div>
+        <h3>Head Lines</h3>
+        <hr/>
+        <div class="row">
+            <div class="col-md-2">
+                <button type="button" class="btn btn-sm btn-outline-primary btnAdd" data-toggle="modal" 
+                data-target="#addHeadLineModal">Add New</button>
+            </div>
+            <div class="col-md-8">
+                <input type="text" class="form-control form-control-sm" autocomplete="off" placeholder="Search by Title..."/>
+            </div>
+        </div>
+        <br/>
+    </div>
+    <div>
+        <table class="table table-bordered table-sm">
+            <thead class="table-dark">
+                <tr>
+                    <th>S.N.</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="bodyHeadLine">
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="addHeadLineModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add Head Line</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+            <div class="form-group">
+                <label>Title</label>
+                <input id="headLineTitle" type="text" class="form-control" autocomplete="off" placeholder="Enter Title"/>
+            </div>
+            <div class="form-group">
+                <label>Description</label>
+                <textarea id="headLineDes" type="text" class="form-control" autocomplete="off" placeholder="Enter Description" rows="3"></textarea>
+            </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+    $(function(){
+        $('#headLineDes').summernote({
+            toolbar: [
+                // [groupName, [list of button]]
+                ['style', ['bold', 'italic', 'underline', 'clear']],
+                ['font', ['strikethrough', 'superscript', 'subscript']],
+                ['fontsize', ['fontsize']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['height', ['height']]
+            ]
+        });
+        $('#addHeadLineModal').on('shown.bs.modal', function () {
+            $('#headLineTitle').focus();
+        });
+        $.ajax({
+            url: '/HeadLine/GetHeadLines',
+            async: false,
+            type: 'get',
+            dataType: 'json',
+            success: function(data){
+                var h ='', sn = 1;
+                $.each(data, function(i, val){
+                    h +='<tr>';
+                    h +='<td>'+ sn +'</td>';
+                    h +='<td>'+ val.HeadLine +'</td>';
+                    h +='<td>'+ val.Description +'</td>';
+                    h +='<td>1</td>';
+                    h +='</tr>';
+                    sn++;
+                });
+                $('#bodyHeadLine').html(h);
+            },
+            error: function(data){
+                alert(data);
+            }
+        });
+    });
+</script>
