@@ -8,5 +8,6 @@ namespace DomainModel
         public bool flag { get; set; }
         public int VenturesMasterId { get; set; }
         public string VenturesTitle { get; set; }
+        public string ImagePath { get; set; }
     }
 }
