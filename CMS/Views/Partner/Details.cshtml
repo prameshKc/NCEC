@@ -1,0 +1,378 @@
+@{
+    ViewBag.Title = "Partner Details";
+}
+<style>
+    .btnAdd {
+        margin: 0 0px 0px 40px;
+    }
+    .modal-content.modAdd {
+        width: 1070px;
+        right: 280px;
+    }
+    .ImgDiv img{
+        height: 180px;
+        width: 295px;
+    }
+    #bodyPD tr td.tdDes {
+        width: 600px;
+    }
+    #bodyPD tr td.tdPN {
+        width: 100px;
+    }
+    #bodyPD tr td.tdImg {
+        width: 200px;
+    }
+</style>
+<form enctype="multipart/form-data">
+    <div>
+        <div>
+            <h3>Partner Details</h3>
+            <hr/>
+            <div class="row">
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-sm btn-outline-primary btnAdd" data-toggle="modal" 
+                    data-target="#addPDModal">Add Details</button>
+                </div>
+                <div class="col-md-8">
+                    <input type="text" id="searchPD" class="form-control form-control-sm" autocomplete="off" placeholder="Search by Partner Name..."/>
+                </div>
+            </div>
+            <br/>
+        </div>
+        <div>
+            <table class="table table-bordered table-sm">
+                <thead class="table-dark">
+                    <tr>
+                        <th>S.N.</th>
+                        <th>Partner Name</th>
+                        <th>Image</th>
+                        <th>Description</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="bodyPD">
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Add/update Modal -->
+        <div class="modal fade" id="addPDModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content modAdd">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalNamePD">Add Partner Details</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input id="idPD" name="idPD" hidden/>
+                    <input id="pmid" name="pmid" hidden/>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Title</label>
+                                    <select id="PDTitle" type="text" class="form-control form-control-sm"></select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Name</label>
+                                    <input id="PDName" type="text" class="form-control form-control-sm" autocomplete="off" placeholder="Enter Name"/>
+                                </div>
+                                <div class="form-group ImgDiv">
+                                    <label>Image</label>
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="partnerImg" accept="image/x-png,image/jpeg"
+                                        onchange="document.getElementById('image').src = window.URL.createObjectURL(this.files[0])"/>
+                                        <label class="custom-file-label" for="inputGroupFile01">Choose Image</label>
+                                    </div>
+                                    <img id="image" src="https://cdn0.iconfinder.com/data/icons/office-and-job-1/100/007-96-512.png" class="img-thumbnail" />
+                                    <p id="pro" style="color:white;"></p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Description</label>
+                                    <textarea id="PDDes" type="text" class="form-control form-control-sm" autocomplete="off"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
+                    <input type="button" id="btnSavePD" class="btn btn-outline-success" value="Save" />
+                </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <!-- Delete Modal -->
+        <div class="modal fade" id="deletePDModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Delete Partner Title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input id="idPDDel" name="idPDDel" hidden/>
+                        <div class="row">
+                            <div class="col-md-2"> 
+                                <i class="fa fa-question-circle" style="font-size: 50px; color: #4bb349;"></i>
+                            </div>
+                            <div class="col-md-10">
+                                Sure? You want to delete this.
+                            </div>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
+                    <input type="button" id="btnDelPD" class="btn btn-outline-danger" value="Delete" />
+                </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</form>
+
+<script>
+    $(function(){
+        getPartnerName();
+        
+        getPartnerTitles();
+
+        $('#partnerImg').change(function () {
+            $('#image').show();
+            var File = this.files;
+            if (File && File[0]) {
+                ReadImage(File[0]);
+            }
+        });
+        
+        var ReadImage = function (file) {
+            var reader = new FileReader;
+            var image = new Image;
+            reader.readAsDataURL(file);
+            reader.onload = function (_file) {
+                image.src = _file.target.result;
+                image.onload = function () {
+                    var height = this.height;
+                    var width = this.width;
+                    var type = file.type;
+                    var size = ~~(file.size / 1024) + "KB";
+                    $("#image").attr('src', _file.target.result);
+                    $("#pro").text("Size:" + size + ", " + height + "X " + width + ", " + type + "");
+                    $("#pro").css("color", "black");
+                };
+            };
+        };
+        
+        $('#PDDes').summernote({
+            placeholder: 'Write description here...',
+            toolbar: [
+                // [groupName, [list of button]]
+                ['style', ['bold', 'italic', 'underline', 'clear']],
+                ['font', ['strikethrough', 'superscript', 'subscript']],
+                ['fontsize', ['fontsize']],
+                ['color', ['color']],
+                ['fontname', ['fontname']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['height', ['height']]
+                /*,['insert', ['link', 'picture', 'video', 'hr', 'doc', 'readmore', 'lorem', 'emoji']],*/
+
+            ]
+        });
+
+        $('#addPDModal').on('shown.bs.modal', function () {
+            $('#PDTitle').focus();
+        });
+        
+        $('#addPDModal').on('hidden.bs.modal', function () {
+            restForm();
+        });
+
+        $('#btnSavePD').click(function(){
+            if($('#idPD').val().trim() === '')
+            {
+                $('#idPD').val(0);
+            }
+            var fd = new FormData();
+            var files = $("#partnerImg").get(0).files;
+            if (files.length > 0) {
+                fd.append("file", files[0]);
+            }
+            fd.append("PartnerMasterId", $("#PDTitle").val());
+            fd.append("Id", $("#idPD").val());
+            fd.append("Name", $("#PDName").val());
+            fd.append("Description", $("#PDDes").val());
+            $.ajax({
+                type: "POST",
+                dataType: "JSON",
+                data: fd,
+                url: '/Partner/PartnerDetails_AddUpdate',
+                contentType: false,
+                processData: false,
+                async: false,
+                success: function (data) {
+                    if(data === 'Success')
+                    {
+                        if(parseInt($('#idPD').val()) === 0)
+                        {
+                            alert("Record Successfully Added!");
+                        }
+                        else
+                        {
+                            alert("Record Successfully Updated!");
+                        }
+                        $('#addPDModal').modal('hide');
+                        restForm();
+                    }
+                    else
+                    {
+                        alert(data);
+                    }
+                },
+                error: function(data){
+                    alert(data);
+                }
+            });
+        });
+
+        $('#bodyPD').on('click', '.editPD', function(){
+            var id = $(this).attr('data-id');
+            var pmid = $(this).attr('data-pmid');
+            if(id > 0 && pmid > 0)
+            {  
+                $.ajax({
+                    url: '/Partner/GetPartnerDetailsById',
+                    async: false,
+                    type: 'get',
+                    dataType: 'json',
+                    data: { Id : id, pmid : pmid },
+                    success: function(data){
+                        $('#modalNamePD').html('Update Partner Details');
+                        $('#btnSavePD').val('Update');
+                        $('#idPD').val(id);
+                        $('#pmid').val(pmid);
+                        $('#PDTitle').val(data.partnerMasterId).select();
+                        $('#PDName').val(data.name);
+                        $("#image").attr('src', data.imagePath);
+                        $("#image").show();
+                        $('#PDDes').summernote('code', data.description);
+                        $('#addPDModal').modal('show');
+                    },
+                    error: function(data){
+                        alert(data);
+                    }
+                });
+            }
+        });
+        
+        $('#bodyPD').on('click', '.deletePD', function(){
+            $('#deletePDModal').modal('show');
+            var id = $(this).attr('data-id');
+            $('#idPDDel').val(id);
+        });
+
+        $("#btnDelPD").click(function(){
+            if(parseInt($('#idPDDel').val()) > 0)
+            {
+                $.ajax({
+                    url: '/Partner/PartnerDetails_Delete',
+                    async: false,
+                    type: 'post',
+                    dataType: 'json',
+                    data: { 
+                        Id : $('#idPDDel').val()
+                    },
+                    success: function(data){
+                        if(data === 'Deleted')
+                        {
+                            alert("Record Successfully Deleted!");
+                            $('#deletePDModal').modal('hide');
+                            restForm();
+                        }
+                        else
+                        {
+                            alert(data);
+                        }
+                    },
+                    error: function(data){
+                        alert(data);
+                    }
+                });
+            }
+        });
+    });
+
+    function getPartnerName(){
+        $.ajax({
+            url: '/Partner/GetPartnerName',
+            async: false,
+            type: 'get',
+            dataType: 'json',
+            data: { title : '' },
+            success: function(data){
+                var h = '', sn = 1;
+                $.each(data, function(i, val){
+                    h += '<tr>';
+                    h += '<td style="width: 2%;">' + sn + '</td>';
+                    h += '<td class="tdPN">' + val.name + '</td>';
+                    h += '<td class="tdImg"><div><img src="' + val.imagePath + '" style="max-width:100px;max-height:100px" /></div></td>';
+                    h += '<td class="tdDes"><div style="max-height:100px; overflow:auto">'+ val.description +'</div></td>&nbsp;&nbsp;';
+                    h += '<td style=""><div class="row"><div class="col-md-6"><button type="button" data-id="'+ val.id +'" data-pmid="'+ val.partnerMasterId +'" class="editPD btn btn-sm btn-outline-info">Edit</button></div>'+
+                    '<div class="col-md-6"><button type="button" data-id="'+ val.id +'" data-pmid="'+ val.partnerMasterId +'" class="deletePD btn btn-sm btn-outline-danger">Delete</button></td></div>';
+                    h +='</tr>';
+                    sn++;
+                });
+                $('#bodyPD').html(h);
+            },
+            error: function(data){
+                alert(data);
+            }
+        });
+
+    }
+
+    function getPartnerTitles(){
+        $.ajax({
+            url: '/Partner/GetPartnerTitle',
+            async: false,
+            type: 'get',
+            dataType: 'json',
+            data: { title : '' },
+            success: function(data){
+                $('#PDTitle').empty();
+                $('#PDTitle').append('<option value="0"> Select Partner Title </option>');
+                $.each(data, function(i, val){
+                    $('#PDTitle').append('<option value="'+ val.partnerMasterId +'">'+ val.partnerTitle +'</option>');
+                });
+            },
+            error: function(data){
+                alert(data);
+            }
+        });
+
+    }
+
+    function restForm(){
+        getPartnerTitles();
+        getPartnerName();
+        $("#PDTitle").val('0').select();
+        $("#PDName").val('');
+        $("#PDDes").summernote("code", '');
+        $("#pro").text('');
+        $('#btnSavePD').val('Save');
+        $('#idPDDel').val(0);
+        $("#image").attr('src', 'https://cdn0.iconfinder.com/data/icons/office-and-job-1/100/007-96-512.png');
+        $("#image").show();
+        $('#modalNamePD').html('Add Partner Details');
+        $('#idPD').val(0);
+        $('#pmid').val(0);
+    }
+</script>
