@@ -236,3 +236,4 @@ A:\NCECPROJ\UI\bin\Debug\netcoreapp3.1\DomainModel.dll
 A:\NCECPROJ\UI\bin\Debug\netcoreapp3.1\DAL.pdb
 A:\NCECPROJ\UI\bin\Debug\netcoreapp3.1\BLL.pdb
 A:\NCECPROJ\UI\bin\Debug\netcoreapp3.1\DomainModel.pdb
+A:\NCECPROJ\UI\obj\Debug\netcoreapp3.1\Razor\Views\About\Contact.cshtml.g.cs

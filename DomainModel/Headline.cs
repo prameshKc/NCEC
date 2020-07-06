@@ -6,5 +6,6 @@ namespace DomainModel
         public string HeadLine { get; set; }
         public string Description { get; set; }
         public bool flag { get; set; }
+        public bool isAboutPage { get; set; }
     }
 }

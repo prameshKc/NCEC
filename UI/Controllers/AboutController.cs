@@ -22,7 +22,16 @@ namespace UI.Controllers
         {
             
             Task<IEnumerable<DomainModel.Headline>> list = _repo.GetListAsync("sp_HeadLines_GetbyHeadLine", CommandType.StoredProcedure);
-            List<DomainModel.Headline> pl = list.Result.ToList();
+            List<DomainModel.Headline> pl = list.Result.Where(p=>p.isAboutPage).ToList();
+            return View(pl);
+        }
+
+        public IActionResult Contact(){
+              
+            Func<DomainModel.Headline,bool> contact= p=>p.HeadLine=="CONTACTS";
+            Task<IEnumerable<DomainModel.Headline>> list = _repo
+                                .FilterAsync(contact,"sp_HeadLines_GetbyHeadLine", CommandType.StoredProcedure);
+            var pl = list.Result.FirstOrDefault();
             return View(pl);
         }
     }
