@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ACER\\Documents\\ranish\\gitProj\\NCEC\\BLL\\BLL.csproj": {}
+    "A:\\NCECPROJ\\BLL\\BLL.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ACER\\Documents\\ranish\\gitProj\\NCEC\\BLL\\BLL.csproj": {
+    "A:\\NCECPROJ\\BLL\\BLL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ACER\\Documents\\ranish\\gitProj\\NCEC\\BLL\\BLL.csproj",
+        "projectUniqueName": "A:\\NCECPROJ\\BLL\\BLL.csproj",
         "projectName": "BLL",
-        "projectPath": "C:\\Users\\ACER\\Documents\\ranish\\gitProj\\NCEC\\BLL\\BLL.csproj",
-        "packagesPath": "C:\\Users\\ACER\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ACER\\Documents\\ranish\\gitProj\\NCEC\\BLL\\obj\\",
+        "projectPath": "A:\\NCECPROJ\\BLL\\BLL.csproj",
+        "packagesPath": "C:\\Users\\Acer\\.nuget\\packages\\",
+        "outputPath": "A:\\NCECPROJ\\BLL\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\ACER\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Acer\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -30,11 +30,11 @@
         "frameworks": {
           "netstandard2.0": {
             "projectReferences": {
-              "C:\\Users\\ACER\\Documents\\ranish\\gitProj\\NCEC\\DAl\\DAL.csproj": {
-                "projectPath": "C:\\Users\\ACER\\Documents\\ranish\\gitProj\\NCEC\\DAl\\DAL.csproj"
+              "A:\\NCECPROJ\\DAl\\DAL.csproj": {
+                "projectPath": "A:\\NCECPROJ\\DAl\\DAL.csproj"
               },
-              "C:\\Users\\ACER\\Documents\\ranish\\gitProj\\NCEC\\DomainModel\\DomainModel.csproj": {
-                "projectPath": "C:\\Users\\ACER\\Documents\\ranish\\gitProj\\NCEC\\DomainModel\\DomainModel.csproj"
+              "A:\\NCECPROJ\\DomainModel\\DomainModel.csproj": {
+                "projectPath": "A:\\NCECPROJ\\DomainModel\\DomainModel.csproj"
               }
             }
           }
@@ -73,24 +73,24 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.200\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\ACER\\Documents\\ranish\\gitProj\\NCEC\\DAl\\DAL.csproj": {
+    "A:\\NCECPROJ\\DAl\\DAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ACER\\Documents\\ranish\\gitProj\\NCEC\\DAl\\DAL.csproj",
+        "projectUniqueName": "A:\\NCECPROJ\\DAl\\DAL.csproj",
         "projectName": "DAL",
-        "projectPath": "C:\\Users\\ACER\\Documents\\ranish\\gitProj\\NCEC\\DAl\\DAL.csproj",
-        "packagesPath": "C:\\Users\\ACER\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ACER\\Documents\\ranish\\gitProj\\NCEC\\DAl\\obj\\",
+        "projectPath": "A:\\NCECPROJ\\DAl\\DAL.csproj",
+        "packagesPath": "C:\\Users\\Acer\\.nuget\\packages\\",
+        "outputPath": "A:\\NCECPROJ\\DAl\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\ACER\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Acer\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -143,24 +143,24 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.200\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\ACER\\Documents\\ranish\\gitProj\\NCEC\\DomainModel\\DomainModel.csproj": {
+    "A:\\NCECPROJ\\DomainModel\\DomainModel.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ACER\\Documents\\ranish\\gitProj\\NCEC\\DomainModel\\DomainModel.csproj",
+        "projectUniqueName": "A:\\NCECPROJ\\DomainModel\\DomainModel.csproj",
         "projectName": "DomainModel",
-        "projectPath": "C:\\Users\\ACER\\Documents\\ranish\\gitProj\\NCEC\\DomainModel\\DomainModel.csproj",
-        "packagesPath": "C:\\Users\\ACER\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ACER\\Documents\\ranish\\gitProj\\NCEC\\DomainModel\\obj\\",
+        "projectPath": "A:\\NCECPROJ\\DomainModel\\DomainModel.csproj",
+        "packagesPath": "C:\\Users\\Acer\\.nuget\\packages\\",
+        "outputPath": "A:\\NCECPROJ\\DomainModel\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\ACER\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Acer\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -201,7 +201,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.200\\RuntimeIdentifierGraph.json"
         }
       }
     }
